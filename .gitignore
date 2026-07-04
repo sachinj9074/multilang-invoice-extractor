@@ -1,0 +1,19 @@
+.env
+
+# Invoice image files
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.bmp
+*.gif
+*.heic
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Extracted invoice data
+invoices.xlsx
