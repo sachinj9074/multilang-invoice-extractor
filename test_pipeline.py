@@ -2,7 +2,8 @@ import sys
 from pathlib import Path
 
 from excel_writer import append_invoice_row
-from extract import extract_invoice_data
+from extract import detect_media_type, extract_invoice_data
+from validate import validate_invoice
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -14,8 +15,11 @@ def main():
 
     image_path = sys.argv[1]
     filename = Path(image_path).name
+    image_bytes = Path(image_path).read_bytes()
+    media_type = detect_media_type(image_path)
 
-    result = extract_invoice_data(image_path)
+    result = extract_invoice_data(image_bytes, media_type)
+    result = validate_invoice(result)
 
     try:
         append_invoice_row(result, filename)

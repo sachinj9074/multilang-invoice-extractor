@@ -1,7 +1,8 @@
 import json
 import sys
+from pathlib import Path
 
-from extract import extract_invoice_data
+from extract import detect_media_type, extract_invoice_data
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -12,7 +13,10 @@ def main():
         sys.exit(1)
 
     image_path = sys.argv[1]
-    result = extract_invoice_data(image_path)
+    image_bytes = Path(image_path).read_bytes()
+    media_type = detect_media_type(image_path)
+
+    result = extract_invoice_data(image_bytes, media_type)
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

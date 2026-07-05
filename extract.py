@@ -48,16 +48,24 @@ MEDIA_TYPES = {
 }
 
 
-def extract_invoice_data(image_path):
-    path = Path(image_path)
-    media_type = MEDIA_TYPES.get(path.suffix.lower())
+def detect_media_type(filename):
+    media_type = MEDIA_TYPES.get(Path(filename).suffix.lower())
     if media_type is None:
-        raise ValueError(f"Unsupported image extension: {path.suffix}")
+        raise ValueError(f"Unsupported image extension: {Path(filename).suffix}")
+    return media_type
 
-    image_bytes = path.read_bytes()
+
+def extract_invoice_data(image_bytes, media_type):
     image_b64 = base64.standard_b64encode(image_bytes).decode("utf-8")
 
-    client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        raise RuntimeError(
+            "ANTHROPIC_API_KEY is not set. Set it in a local .env file, "
+            "or as an environment variable / secret in the deployment environment."
+        )
+
+    client = Anthropic(api_key=api_key)
 
     response = client.messages.create(
         model="claude-sonnet-5",

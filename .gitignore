@@ -17,3 +17,5 @@ __pycache__/
 
 # Extracted invoice data
 invoices.xlsx
+*_export.csv
+eval_log_template.csv
