@@ -11,7 +11,7 @@ Manual invoice data entry doesn't scale across languages and formats: a Hindi in
 - Manual entry: roughly 2 minutes per invoice.
 - Automated batch: a 17-invoice batch processed end-to-end in under 1 minute.
 
-That's a rough 30x reduction in wall-clock time for the same batch, with every result additionally flagged for confidence and arithmetic consistency so low-quality extractions aren't silently accepted.
+That's a rough 30x reduction (~97%+ time reduction) in wall-clock time for the same batch, with every result additionally flagged for confidence and arithmetic consistency so low-quality extractions aren't silently accepted.
 
 ## Live Demo
 
