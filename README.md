@@ -15,7 +15,7 @@ That's a rough 30x reduction in wall-clock time for the same batch, with every r
 
 ## Live Demo
 
-[Demo video](PASTE_VIDEO_URL_HERE) — screen recording of the app processing a batch of invoices end-to-end.
+[Demo video](https://drive.google.com/file/d/15NWO7SI6g7sFYGEoSUEWquH0esX0sXLg/view?usp=drive_link) — screen recording of the app processing a batch of invoices end-to-end.
 
 ## Architecture
 
